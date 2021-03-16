@@ -3,16 +3,9 @@ import './App.css';
 import Mensagem from './Mensagem'
 
 class App extends React.Component {
-//fdsfsdfsd
-  // mensagens = [{a}]
 
   state ={
-    mensagens : [ 
-      {
-        nome:'Astrobot:', 
-        texto:'Boas vindas. Deixe sua mensagem'
-      } 
-    ],
+    mensagens : '',
     valorInputNome: '',
     valorInputTexto: ''
   }
@@ -51,14 +44,20 @@ class App extends React.Component {
     return (
       <div className="App">
         <div className="msg-container">
-            {this.state.mensagens.map((mensagem) => {
-                return <div className='msg-baloon'>
-                    <Mensagem
-                      nome={mensagem.nome}
-                      texto={mensagem.texto}
-                    />
-                </div>
-            })}
+          {this.state.mensagens !== '' ? 
+          ( 
+            this.state.mensagens.map((mensagem) => {
+              return <div className='msg-baloon'>
+                  <Mensagem
+                    nome={mensagem.nome}
+                    texto={mensagem.texto}
+                  />
+              </div>
+          })
+          ):(
+            <></>
+          )}
+
           </div>
         <div className="form-container">
           <input
